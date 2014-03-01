@@ -1,14 +1,15 @@
 Summary:	Realtek RTL2832U Software Defined Radio driver library
 Name:		librtlsdr
-Version:	0.5.2
+Version:	0.5.3
 Release:	1
 License:	GPL v2+
 Group:		Libraries
 Source0:	https://github.com/steve-m/librtlsdr/archive/v%{version}.tar.gz
-# Source0-md5:	1fc260a86976e06caf905f726d0c9b9b
+# Source0-md5:	9f6d8c4b5e1998305d0346689b43db98
 URL:		http://sdr.osmocom.org/trac/wiki/rtl-sdr
 BuildRequires:	cmake
 BuildRequires:	libusb-devel
+Obsoletes:	rtl-sdr
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -20,6 +21,7 @@ host, which is officially used for DAB/DAB+/FM demodulation.
 Summary:	Header files for rtl-sdr
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+Obsoletes:	rtl-sdr-devel
 
 %description devel
 Header files for rtl-sdr.
@@ -38,7 +40,8 @@ Static %{name} library.
 %build
 %cmake . \
 	-DINSTALL_UDEV_RULES=ON \
-	-DDETACH_KERNEL_DRIVER=OFF
+	-DDETACH_KERNEL_DRIVER=OFF \
+	-DLIB_INSTALL_DIR:PATH=%{_libdir}
 
 %{__make}
 
