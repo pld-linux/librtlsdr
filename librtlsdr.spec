@@ -1,7 +1,7 @@
 Summary:	Realtek RTL2832U Software Defined Radio driver library
 Name:		librtlsdr
 Version:	0.5.3
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Libraries
 Source0:	https://github.com/steve-m/librtlsdr/archive/v%{version}.tar.gz
