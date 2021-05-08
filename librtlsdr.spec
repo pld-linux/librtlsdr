@@ -8,8 +8,9 @@ Group:		Libraries
 Source0:	https://github.com/steve-m/librtlsdr/archive/v%{version}.tar.gz
 # Source0-md5:	9f6d8c4b5e1998305d0346689b43db98
 URL:		http://sdr.osmocom.org/trac/wiki/rtl-sdr
-BuildRequires:	cmake
-BuildRequires:	libusb-devel
+BuildRequires:	cmake >= 2.6
+BuildRequires:	libusb-devel >= 1.0
+BuildRequires:	pkgconfig
 Obsoletes:	rtl-sdr < 0.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -30,9 +31,13 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki rtlsdr
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	rtl-sdr-devel < 0.5
+Requires:	libusb-devel >= 1.0
 
 %description devel
-Header files for rtlsdr.
+Header files for rtlsdr library.
+
+%description devel -l pl.UTF-8
+Pliki nagłówkowe biblioteki rtlsdr.
 
 %package static
 Summary:	Static rtlsdr library
@@ -72,17 +77,23 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS README
-%attr(755,root,root) %{_bindir}/rtl_*
-%attr(755,root,root) %{_libdir}/%{name}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/%{name}.so.0
+%attr(755,root,root) %{_bindir}/rtl_adsb
+%attr(755,root,root) %{_bindir}/rtl_eeprom
+%attr(755,root,root) %{_bindir}/rtl_fm
+%attr(755,root,root) %{_bindir}/rtl_power
+%attr(755,root,root) %{_bindir}/rtl_sdr
+%attr(755,root,root) %{_bindir}/rtl_tcp
+%attr(755,root,root) %{_bindir}/rtl_test
+%attr(755,root,root) %{_libdir}/librtlsdr.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/librtlsdr.so.0
 /etc/udev/rules.d/rtl-sdr.rules
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/%{name}.so
+%attr(755,root,root) %{_libdir}/librtlsdr.so
 %{_includedir}/rtl-sdr*.h
-%{_pkgconfigdir}/%{name}.pc
+%{_pkgconfigdir}/librtlsdr.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/%{name}.a
+%{_libdir}/librtlsdr.a
