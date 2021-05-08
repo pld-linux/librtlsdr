@@ -1,4 +1,5 @@
 Summary:	Realtek RTL2832U Software Defined Radio driver library
+Summary(pl.UTF-8):	Biblioteka sterownika Realtek RTL2832U Software Defined Radio
 Name:		librtlsdr
 Version:	0.5.3
 Release:	2
@@ -9,7 +10,7 @@ Source0:	https://github.com/steve-m/librtlsdr/archive/v%{version}.tar.gz
 URL:		http://sdr.osmocom.org/trac/wiki/rtl-sdr
 BuildRequires:	cmake
 BuildRequires:	libusb-devel
-Obsoletes:	rtl-sdr
+Obsoletes:	rtl-sdr < 0.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -17,22 +18,33 @@ DVB-T dongles based on the Realtek RTL2832U can be used as a cheap
 SDR, since the chip allows transferring the raw I/Q samples to the
 host, which is officially used for DAB/DAB+/FM demodulation.
 
+%description -l pl.UTF-8
+Moduły (dongle) DVB-T oparte na układzie Realtek RTL2832U mogą służyć
+jako tanie radio programowalne (SDR), ponieważ układ pozwala na
+przesyłanie surowych próbek I/Q do hosta, który odpowiada za
+demodulację DAB/DAB+/FM.
+
 %package devel
-Summary:	Header files for rtl-sdr
+Summary:	Header files for rtlsdr library
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki rtlsdr
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
-Obsoletes:	rtl-sdr-devel
+Requires:	%{name} = %{version}-%{release}
+Obsoletes:	rtl-sdr-devel < 0.5
 
 %description devel
-Header files for rtl-sdr.
+Header files for rtlsdr.
 
 %package static
-Summary:	Static %{name} library
+Summary:	Static rtlsdr library
+Summary(pl.UTF-8):	Statyczna biblioteka rtlsdr
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
-Static %{name} library.
+Static rtlsdr library.
+
+%description static -l pl.UTF-8
+Statyczna biblioteka rtlsdr.
 
 %prep
 %setup -q
