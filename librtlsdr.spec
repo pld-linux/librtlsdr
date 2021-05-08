@@ -1,16 +1,19 @@
 Summary:	Realtek RTL2832U Software Defined Radio driver library
 Summary(pl.UTF-8):	Biblioteka sterownika Realtek RTL2832U Software Defined Radio
 Name:		librtlsdr
-Version:	0.5.3
-Release:	2
+Version:	0.6.0
+Release:	1
 License:	GPL v2+
 Group:		Libraries
-Source0:	https://github.com/steve-m/librtlsdr/archive/v%{version}.tar.gz
-# Source0-md5:	9f6d8c4b5e1998305d0346689b43db98
+#Source0Download: https://github.com/steve-m/librtlsdr/releases
+Source0:	https://github.com/steve-m/librtlsdr/archive/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	5f1b8c28b264218daa84eb1d437aecf7
+Patch0:		%{name}-pc.patch
 URL:		http://sdr.osmocom.org/trac/wiki/rtl-sdr
 BuildRequires:	cmake >= 2.6
 BuildRequires:	libusb-devel >= 1.0
 BuildRequires:	pkgconfig
+BuildRequires:	sed >= 4.0
 Obsoletes:	rtl-sdr < 0.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -53,19 +56,22 @@ Statyczna biblioteka rtlsdr.
 
 %prep
 %setup -q
+%patch0 -p1
+
+%{__sed} -i -e 's,/etc/udev/rules\.d,/lib/udev/rules.d,' CMakeLists.txt
 
 %build
-%cmake . \
+%cmake -B build \
 	-DINSTALL_UDEV_RULES=ON \
 	-DDETACH_KERNEL_DRIVER=OFF \
-	-DLIB_INSTALL_DIR:PATH=%{_libdir}
+	-DLIB_INSTALL_DIR:PATH=%{_lib}
 
-%{__make}
+%{__make} -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
@@ -86,7 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/rtl_test
 %attr(755,root,root) %{_libdir}/librtlsdr.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/librtlsdr.so.0
-/etc/udev/rules.d/rtl-sdr.rules
+/lib/udev/rules.d/rtl-sdr.rules
 
 %files devel
 %defattr(644,root,root,755)

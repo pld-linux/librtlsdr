@@ -1,0 +1,10 @@
+--- librtlsdr-0.6.0/librtlsdr.pc.in.orig	2018-08-26 14:54:51.000000000 +0200
++++ librtlsdr-0.6.0/librtlsdr.pc.in	2021-05-08 14:46:54.173422361 +0200
+@@ -6,6 +6,6 @@
+ Name: RTL-SDR Library
+ Description: C Utility Library
+ Version: @VERSION@
+-Cflags: -I${includedir}/ @RTLSDR_PC_CFLAGS@
++Cflags: -I${includedir} @RTLSDR_PC_CFLAGS@
+ Libs: -L${libdir} -lrtlsdr -lusb-1.0
+ Libs.private: @RTLSDR_PC_LIBS@
