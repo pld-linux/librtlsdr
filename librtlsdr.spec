@@ -1,16 +1,16 @@
 Summary:	Realtek RTL2832U Software Defined Radio driver library
 Summary(pl.UTF-8):	Biblioteka sterownika Realtek RTL2832U Software Defined Radio
 Name:		librtlsdr
-Version:	0.6.0
+Version:	2.0.2
 Release:	1
 License:	GPL v2+
 Group:		Libraries
-#Source0Download: https://github.com/steve-m/librtlsdr/releases
-Source0:	https://github.com/steve-m/librtlsdr/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	5f1b8c28b264218daa84eb1d437aecf7
+#Source0Download: https://github.com/steve-m/librtlsdr/tags
+Source0:	https://github.com/steve-m/librtlsdr/archive/v%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	632f03d41e2b2f9c2dd94ef2b51be5bf
 Patch0:		%{name}-pc.patch
-URL:		http://sdr.osmocom.org/trac/wiki/rtl-sdr
-BuildRequires:	cmake >= 2.6
+URL:		https://osmocom.org/projects/rtl-sdr/wiki/Rtl-sdr
+BuildRequires:	cmake >= 3.7.2
 BuildRequires:	libusb-devel >= 1.0
 BuildRequires:	pkgconfig
 BuildRequires:	sed >= 4.0
@@ -84,6 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS README
 %attr(755,root,root) %{_bindir}/rtl_adsb
+%attr(755,root,root) %{_bindir}/rtl_biast
 %attr(755,root,root) %{_bindir}/rtl_eeprom
 %attr(755,root,root) %{_bindir}/rtl_fm
 %attr(755,root,root) %{_bindir}/rtl_power
@@ -98,6 +99,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/librtlsdr.so
 %{_includedir}/rtl-sdr*.h
+%{_libdir}/cmake/rtlsdr
 %{_pkgconfigdir}/librtlsdr.pc
 
 %files static
