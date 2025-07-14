@@ -56,7 +56,7 @@ Statyczna biblioteka rtlsdr.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %{__sed} -i -e 's,/etc/udev/rules\.d,/lib/udev/rules.d,' CMakeLists.txt
 
