@@ -1,13 +1,13 @@
 Summary:	Realtek RTL2832U Software Defined Radio driver library
 Summary(pl.UTF-8):	Biblioteka sterownika Realtek RTL2832U Software Defined Radio
 Name:		librtlsdr
-Version:	2.0.2
+Version:	2.0.3
 Release:	1
 License:	GPL v2+
 Group:		Libraries
 #Source0Download: https://github.com/steve-m/librtlsdr/tags
 Source0:	https://github.com/steve-m/librtlsdr/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	632f03d41e2b2f9c2dd94ef2b51be5bf
+# Source0-md5:	c86d911b3686ca401a40a58fe25733cf
 Patch0:		%{name}-pc.patch
 URL:		https://osmocom.org/projects/rtl-sdr/wiki/Rtl-sdr
 BuildRequires:	cmake >= 3.7.2

@@ -1,5 +1,5 @@
---- librtlsdr-2.0.2/librtlsdr.pc.in.orig	2024-05-29 20:58:17.292514834 +0200
-+++ librtlsdr-2.0.2/librtlsdr.pc.in	2024-05-29 21:00:13.145220540 +0200
+--- librtlsdr-2.0.3/librtlsdr.pc.in.orig	2024-05-29 20:58:17.292514834 +0200
++++ librtlsdr-2.0.3/librtlsdr.pc.in	2024-05-29 21:00:13.145220540 +0200
 @@ -6,6 +6,6 @@ includedir=@includedir@
  Name: RTL-SDR Library
  Description: C Utility Library
